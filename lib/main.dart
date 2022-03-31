@@ -51,6 +51,13 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
   Widget build(BuildContext context) {
     // Scaffold
     return Scaffold(
+      floatingActionButton: new FloatingActionButton(
+        onPressed: (){},
+        backgroundColor: Colors.black,
+        child: Icon(Icons.message),
+      ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+
         //color of the background
         backgroundColor: Colors.grey[200],
         // SafeArea to avoid bezels
@@ -326,14 +333,19 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                        print("Account Created");
 
                      },
-                     )
+                     ),
                   ],
                 ),
+
+
               ],
+
             ),
           ),
-        ));
+        ),
+
+    );
   }
 }
 
-enum Country { ng, us, uk, gh }
+
