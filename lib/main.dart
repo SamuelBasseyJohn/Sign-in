@@ -54,7 +54,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
       floatingActionButton: new FloatingActionButton(
         onPressed: (){},
         backgroundColor: Colors.black,
-        child: Icon(Icons.message),
+        child: const Icon(Icons.message),
       ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
 
@@ -101,9 +101,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         ),
 
                         Row(
-                          children: [
+                          children: const [
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(
+                              padding: EdgeInsets.fromLTRB(
                                 20.0,
                                 20.0,
                                 20.0,
@@ -128,15 +128,15 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             controller: _firstAndMiddleName,
                             decoration: const InputDecoration(
                               hintText: "Full legal first and middle name(s)",
-                              border: const OutlineInputBorder(),
+                              border: OutlineInputBorder(),
                             ),
                           ),
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                                  EdgeInsets.symmetric(horizontal: 20.0),
                               child: Text(
                                 "Full legal Surname",
                                 style:
@@ -181,15 +181,15 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                       //   bottomLeft: Radius.circular(8),
                                       //
                                       // ),
-                                  border: Border(
+                                  border: const Border(
                                     top: BorderSide(width: 1.0, color: Colors.grey),
                                     bottom: BorderSide(width: 1.0, color: Colors.grey),
                                     left: BorderSide(width: 1.0, color: Colors.grey)
                                   ),
                                   ),
-                                  padding: EdgeInsets.symmetric(vertical: 4),
+                                  padding: const EdgeInsets.symmetric(vertical: 4),
                                   child: CountryCodePicker(
-                                    closeIcon: Icon(Icons.close ),
+                                    closeIcon: const Icon(Icons.close ),
                                     initialSelection: 'ng',
                                   ),
                                 ),
@@ -199,9 +199,8 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                 child: TextField(
                                   keyboardType: TextInputType.phone,
                                   controller: _phoneNumber,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.phone_android),
-                                    hintText: "Phone Number",
+                                  decoration: const InputDecoration(
+                                    hintText: "Example: 8180000000",
                                     label: Text("Phone Number"),
                                     prefixText: (""),
                                     border: OutlineInputBorder(
@@ -216,10 +215,10 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                           ),
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                                  EdgeInsets.symmetric(horizontal: 20.0),
                               child: Text(
                                 "Email address ",
                                 style:
@@ -239,17 +238,17 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             keyboardType: TextInputType.emailAddress,
                             controller: _email,
                             decoration: const InputDecoration(
-                              prefixIcon: const Icon(Icons.mail),
+                              prefixIcon: Icon(Icons.mail),
                               hintText: "Email",
-                              border: const OutlineInputBorder(),
+                              border: OutlineInputBorder(),
                             ),
                           ),
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                                  EdgeInsets.symmetric(horizontal: 20.0),
                               child: Text(
                                 "Password ",
                                 style:
@@ -269,8 +268,8 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             obscureText: true,
                             controller: _password,
                             decoration: const InputDecoration(
-                              prefixIcon: const Icon(Icons.password),
-                              suffixIcon: const Icon(Icons.visibility),
+                              prefixIcon: Icon(Icons.password),
+                              suffixIcon: Icon(Icons.visibility),
                               hintText: "Password",
                               border: OutlineInputBorder(),
                             ),
@@ -296,10 +295,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                   },
                                 ),
                               ),
-                             Expanded(
+                             const Expanded(
                                flex: 4,
-                               child: const
-                               Text(
+                               child: Text(
                                   "I confirm the information provided is correct as they appear on my legal document",
                                 ),
                              ),
@@ -311,13 +309,13 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             print("Account Created");
                           },
                           style: ElevatedButton.styleFrom(
-                            minimumSize: Size(340, 50),
+                            minimumSize: const Size(340, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(7),
                             ),
                             primary: Colors.grey[350],
                           ),
-                          child: Text("Create your account"),
+                          child: const Text("Create your account"),
                         ),
                       ],
                     ),
@@ -326,9 +324,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
-                    Text("Got an account?"),
+                    const Text("Got an account?"),
                    TextButton(
-                     child: Text("Sign in", style: TextStyle(color: Colors.black) ),
+                     child: const Text("Sign in", style: TextStyle(color: Colors.black) ),
                      onPressed: () {
                        print("Account Created");
 
