@@ -1,6 +1,8 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:country_code_picker/country_code_picker.dart';
+import 'Widgets/PhoneNumber.dart';
+import 'Widgets/BottomText.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,304 +48,242 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
-   bool? value = false;
+  bool? value = false;
   @override
   Widget build(BuildContext context) {
     // Scaffold
     return Scaffold(
-      floatingActionButton: new FloatingActionButton(
-        onPressed: (){},
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
         backgroundColor: Colors.black,
         child: const Icon(Icons.message),
       ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
 
-        //color of the background
-        backgroundColor: Colors.grey[200],
-        // SafeArea to avoid bezels
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                SafeArea(
-                  // This container is for holding all the items
-                  child: Container(
-                    margin:
-                        const EdgeInsets.fromLTRB(15,40,15,20),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                    ),
-                    // I used this to add a border radius to the Container
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      children: [
-                        // Row for the title 'Create your account'
-                        Row(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 25.0),
-                              child: Text(
-                                "Create your account",
-                                style: TextStyle(
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.w700,
-                                ),
+      //color of the background
+      backgroundColor: Colors.grey[200],
+      // SafeArea to avoid bezels
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SafeArea(
+                // This container is for holding all the items
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(15, 40, 15, 20),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                  ),
+                  // I used this to add a border radius to the Container
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Column(
+                    children: [
+                      // Row for the title 'Create your account'
+                      Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 25.0),
+                            child: Text(
+                              "Create your account",
+                              style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                          ],
-                        ),
-                        // Set line below this widget to divide the Title from input
-                        const Divider(
-                          color: Colors.black,
-                        ),
+                          ),
+                        ],
+                      ),
+                      // Set line below this widget to divide the Title from input
+                      const Divider(
+                        color: Colors.black,
+                      ),
 
-                        Row(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                20.0,
-                                20.0,
-                                20.0,
-                                5.0,
-                              ),
-                              child: Text(
-                                "Full legal first and middle name(s) ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
+                      Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                              20.0,
+                              20.0,
+                              20.0,
+                              5.0,
                             ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: TextField(
-                            controller: _firstAndMiddleName,
-                            decoration: const InputDecoration(
-                              hintText: "Full legal first and middle name(s)",
-                              border: OutlineInputBorder(),
+                            child: Text(
+                              "Full legal first and middle name(s) ",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.grey),
                             ),
                           ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          20.0,
+                          15.0,
                         ),
-                        Row(
-                          children: const [
-                            Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                "Full legal Surname",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: TextField(
-                            controller: _surname,
-                            decoration: const InputDecoration(
-                              hintText: "Full legal Surname",
-                              border: OutlineInputBorder(),
-                            ),
+                        child: TextField(
+                          controller: _firstAndMiddleName,
+                          decoration: const InputDecoration(
+                            hintText: "Full legal first and middle name(s)",
+                            border: OutlineInputBorder(),
                           ),
                         ),
+                      ),
+                      Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Text(
+                              "Full legal Surname",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          20.0,
+                          15.0,
+                        ),
+                        child: TextField(
+                          controller: _surname,
+                          decoration: const InputDecoration(
+                            hintText: "Full legal Surname",
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ),
 
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          20.0,
+                          15.0,
+                        ),
+                        child: PhoneNumber(phoneNumber: _phoneNumber),
+                      ),
+                      Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Text(
+                              "Email address ",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.grey),
+                            ),
                           ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey[100],
-
-                                      // borderRadius: BorderRadius.only(
-                                      //   topLeft: Radius.circular(8),
-                                      //   bottomLeft: Radius.circular(8),
-                                      //
-                                      // ),
-                                  border: const Border(
-                                    top: BorderSide(width: 1.0, color: Colors.grey),
-                                    bottom: BorderSide(width: 1.0, color: Colors.grey),
-                                    left: BorderSide(width: 1.0, color: Colors.grey)
-                                  ),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(vertical: 4),
-                                  child: CountryCodePicker(
-                                    closeIcon: const Icon(Icons.close ),
-                                    initialSelection: 'ng',
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: TextField(
-                                  keyboardType: TextInputType.phone,
-                                  controller: _phoneNumber,
-                                  decoration: const InputDecoration(
-                                    hintText: "Example: 8180000000",
-                                    label: Text("Phone Number"),
-                                    prefixText: (""),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(4),
-                                          bottomRight: Radius.circular(4)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          20.0,
+                          15.0,
+                        ),
+                        child: TextField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _email,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.mail),
+                            hintText: "Email",
+                            border: OutlineInputBorder(),
                           ),
                         ),
-                        Row(
-                          children: const [
-                            Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 20.0),
+                      ),
+                      Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Text(
+                              "Password ",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          20.0,
+                          15.0,
+                        ),
+                        child: TextField(
+                          obscureText: true,
+                          controller: _password,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.password),
+                            suffixIcon: Icon(Icons.visibility),
+                            hintText: "Password",
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20.0,
+                          5.0,
+                          25.0,
+                          15.0,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Checkbox(
+                                value: value,
+                                onChanged: (value) {
+                                  setState(() {
+                                    this.value = value;
+                                  });
+                                },
+                              ),
+                            ),
+                            const Expanded(
+                              flex: 4,
                               child: Text(
-                                "Email address ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
+                                "I confirm the information provided is correct as they appear on my legal document",
                               ),
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          print("Account Created");
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(340, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
                           ),
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: _email,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.mail),
-                              hintText: "Email",
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
+                          primary: Colors.grey[350],
                         ),
-                        Row(
-                          children: const [
-                            Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                "Password ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: TextField(
-                            obscureText: true,
-                            controller: _password,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.password),
-                              suffixIcon: Icon(Icons.visibility),
-                              hintText: "Password",
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                         Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            25.0,
-                            15.0,
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Checkbox(
-                                  value: value,
-                                  onChanged: ( value){
-                                    setState(() {
-                                      this.value = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                             const Expanded(
-                               flex: 4,
-                               child: Text(
-                                  "I confirm the information provided is correct as they appear on my legal document",
-                                ),
-                             ),
-                            ],
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            print("Account Created");
-                          },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(340, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7),
-                            ),
-                            primary: Colors.grey[350],
-                          ),
-                          child: const Text("Create your account"),
-                        ),
-                      ],
-                    ),
+                        child: const Text("Create your account"),
+                      ),
+                    ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
-                    const Text("Got an account?"),
-                   TextButton(
-                     child: const Text("Sign in", style: TextStyle(color: Colors.black) ),
-                     onPressed: () {
-                       print("Account Created");
-
-                     },
-                     ),
-                  ],
-                ),
-
-
-              ],
-
-            ),
+              ),
+              const BottomText(),
+              const BottomText(
+                text1: "Sick of this account?",
+                text2: "Delete account",
+              )
+            ],
           ),
         ),
-
+      ),
     );
   }
 }
-
-
