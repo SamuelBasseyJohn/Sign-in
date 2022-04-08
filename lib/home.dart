@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundImage: AssetImage('images/Wallpaper.jpeg'),
                   radius: 60,
                 ),
                 SizedBox(

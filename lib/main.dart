@@ -2,7 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_flutter_assignment/Widgets/formFields.dart';
-import 'package:my_flutter_assignment/appText.dart';
+import 'package:my_flutter_assignment/Widgets/appText.dart';
 import 'package:my_flutter_assignment/home.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
@@ -299,14 +299,20 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                               Expanded(
                                 flex: 4,
                                 child: Text(
-                                  "$myName information provided is correct as they appear on my legal document",
+                                  "i confirm the information provided is correct as they appear on my legal document",
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        //Tenary operator fo
-                        (_formKey.currentState!.validate() && checkboxValue!)
+                        //Tenary operator for Checking if the required textFormFields are
+                        // filled and valid to enable color
+                        (checkboxValue! &&
+                                _surname.text.isNotEmpty &&
+                                _phoneNumber.text.isNotEmpty &&
+                                _email.text.isNotEmpty &&
+                                _password.text.isNotEmpty &&
+                                _firstAndMiddleName.text.isNotEmpty)
                             ? AppButton(
                                 buttonColor: Colors.blue,
                                 onPressed: () {
