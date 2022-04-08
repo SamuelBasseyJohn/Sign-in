@@ -34,9 +34,18 @@ class _HomePageState extends State<HomePage> {
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white70,
-          ),
+              border: Border.all(
+                width: 5,
+                color: Colors.teal,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset.fromDirection(0.25, 10.0),
+                  blurRadius: 10.0,
+                )
+              ]),
           //Create form builder that accepts the global key "_formKey" created earlier. (very essential)
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,6 +56,7 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 40,
                 ),
               ),
+
               //Created a form builder text field for input
               TextField(
                 controller: _homeName,
@@ -70,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   hintText: "HomeName",
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.only(),
                   ),
                   contentPadding: const EdgeInsets.all(20),
                 ),
