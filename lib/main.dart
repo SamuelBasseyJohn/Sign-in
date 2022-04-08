@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_flutter_assignment/Widgets/formFields.dart';
 import 'package:my_flutter_assignment/appText.dart';
 import 'package:my_flutter_assignment/home.dart';
 import 'package:my_flutter_assignment/profile.dart';
@@ -69,14 +70,12 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.chevron_left),
-          color: Colors.black,
-        ),
         elevation: 10,
-        backgroundColor: Colors.grey,
-        title: Text("Sign Up"),
+        backgroundColor: Colors.white54,
+        title: Text(
+          "Sign Up",
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
@@ -137,8 +136,8 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                   5.0,
                                 ),
                                 child: AppText(
-                                    text:
-                                        "Full legal first and middle name(s) ")),
+                                  text: "Full legal first and middle name(s) ",
+                                )),
                           ],
                         ),
                         Padding(
@@ -148,7 +147,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             20.0,
                             15.0,
                           ),
-                          child: TextFormField(
+                          child: FormFields(
+                            firstAndMiddleName: _firstAndMiddleName,
+                            hintText: 'Full legal first and middle name(s)',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Enter your name";
@@ -156,23 +157,13 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                 return null;
                               }
                             },
-                            controller: _firstAndMiddleName,
-                            decoration: const InputDecoration(
-                              hintText: "Full legal first and middle name(s)",
-                              border: OutlineInputBorder(),
-                            ),
                           ),
                         ),
                         Row(
                           children: const [
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                "Full legal Surname",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: AppText(text: "Full legal surname")),
                           ],
                         ),
                         Padding(
@@ -210,13 +201,8 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         Row(
                           children: const [
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                "Email address ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: AppText(text: "Email address")),
                           ],
                         ),
                         Padding(
@@ -246,13 +232,8 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         Row(
                           children: const [
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                "Password ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: AppText(text: "Password")),
                           ],
                         ),
                         Padding(

@@ -7,6 +7,28 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.chevron_left,
+            size: 35,
+          ),
+          color: Colors.black,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, "/Settings"),
+            icon: Icon(
+              Icons.settings,
+              size: 35,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
         elevation: 0,
         title: Text(
           "Profile",

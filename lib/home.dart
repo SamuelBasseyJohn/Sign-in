@@ -25,6 +25,59 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white54,
       ),
       //The App Body
+      drawer: Drawer(
+        backgroundColor: Colors.grey[200],
+        child: ListView(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircleAvatar(
+                  backgroundColor: Colors.red,
+                  radius: 60,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Your App sha",
+                  style: TextStyle(fontSize: 20),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                    primary: Colors.black,
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 30)),
+                onPressed: () => Navigator.pushNamed(context, '/Profile'),
+                child: const Text("Profile")),
+            SizedBox(
+              height: 1,
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                    primary: Colors.black,
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 30)),
+                onPressed: () => Navigator.pushNamed(context, '/Home'),
+                child: const Text("Home")),
+            SizedBox(
+              height: 1,
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                    primary: Colors.black,
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 30)),
+                onPressed: () => Navigator.pushNamed(context, '/'),
+                child: const Text("Sign Up")),
+          ],
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
