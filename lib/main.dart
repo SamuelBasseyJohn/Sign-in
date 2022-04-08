@@ -334,7 +334,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             if (_formKey.currentState!.validate() &&
                                 checkboxValue!) {
                               name();
-                              buttonColor();
+                              // buttonColor();
                             }
                           },
                         ),
