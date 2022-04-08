@@ -167,27 +167,25 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Enter your surname";
-                              } else {
-                                return null;
-                              }
-                            },
-                            controller: _surname,
-                            decoration: const InputDecoration(
-                              hintText: "Full legal Surname",
-                              border: OutlineInputBorder(),
+                            padding: const EdgeInsets.fromLTRB(
+                              20.0,
+                              5.0,
+                              20.0,
+                              15.0,
                             ),
-                          ),
-                        ),
+                            child: FormFields(
+                              firstAndMiddleName: _surname,
+                              hintText: "Full legal surname",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Enter your Surname";
+                                } else if (value.length < 3) {
+                                  return "Surname?, Less than 3 letters?, IMPOSSIBLE!";
+                                } else {
+                                  return null;
+                                }
+                              },
+                            )),
 
                         Padding(
                           padding: const EdgeInsets.fromLTRB(
@@ -307,15 +305,28 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             ],
                           ),
                         ),
-                        AppButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate() &&
-                                checkboxValue!) {
-                              name();
-                              // buttonColor();
-                            }
-                          },
-                        ),
+                        //Tenary operator fo
+                        (_formKey.currentState!.validate() && checkboxValue!)
+                            ? AppButton(
+                                buttonColor: Colors.blue,
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate() &&
+                                      checkboxValue!) {
+                                    name();
+                                    // buttonColor();
+                                  }
+                                },
+                              )
+                            : AppButton(
+                                buttonColor: Colors.grey,
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate() &&
+                                      checkboxValue!) {
+                                    name();
+                                    // buttonColor();
+                                  }
+                                },
+                              ),
                       ],
                     ),
                   ),
@@ -330,8 +341,6 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
     );
   }
 
-  void buttonColor(AppButton) {}
-
   void name() async {
     final input = await Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
@@ -344,7 +353,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
 class AppButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color? buttonColor;
-  const AppButton({Key? key, this.onPressed, this.buttonColor})
+  const AppButton({Key? key, this.onPressed, required this.buttonColor})
       : super(key: key);
 
   @override
