@@ -39,7 +39,16 @@ class PhoneNumber extends StatelessWidget {
         ),
         Expanded(
           flex: 4,
-          child: TextField(
+          child: TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Enter your phone number";
+              } else if (value.length != 10) {
+                return "Phone number must be 10 digits";
+              } else {
+                return null;
+              }
+            },
             keyboardType: TextInputType.phone,
             controller: _phoneNumber,
             decoration: const InputDecoration(
