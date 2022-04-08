@@ -68,16 +68,6 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
   Widget build(BuildContext context) {
     // Scaffold
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 10,
-        backgroundColor: Colors.white54,
-        title: Text(
-          "Sign Up",
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.black,
