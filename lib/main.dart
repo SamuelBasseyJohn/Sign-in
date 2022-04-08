@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_flutter_assignment/appText.dart';
 import 'package:my_flutter_assignment/home.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: "Inter-Bold",
       ),
       initialRoute: '/',
       routes: {
@@ -110,16 +112,14 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         Row(
                           children: const [
                             Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 25.0),
-                              child: Text(
-                                "Create your account",
-                                style: TextStyle(
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 25.0),
+                                child: AppText(
+                                  text: "Create your account",
+                                  textColor: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                )),
                           ],
                         ),
                         // Set line below this widget to divide the Title from input
@@ -130,18 +130,15 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         Row(
                           children: const [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                20.0,
-                                20.0,
-                                20.0,
-                                5.0,
-                              ),
-                              child: Text(
-                                "Full legal first and middle name(s) ",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.grey),
-                              ),
-                            ),
+                                padding: EdgeInsets.fromLTRB(
+                                  20.0,
+                                  20.0,
+                                  20.0,
+                                  5.0,
+                                ),
+                                child: AppText(
+                                    text:
+                                        "Full legal first and middle name(s) ")),
                           ],
                         ),
                         Padding(
