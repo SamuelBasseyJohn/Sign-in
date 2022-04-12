@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,15 +15,14 @@ class SettingsPage extends StatelessWidget {
         elevation: 0,
         title: const Text(
           "Settings",
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.black,
-            fontSize: 30,
           ),
         ),
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(
+          icon: const Icon(
             Icons.chevron_left,
             size: 35,
           ),
@@ -36,10 +40,10 @@ class SettingsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  child: const Text("Go Back"),
-                  onPressed: () => Navigator.pop(context),
-                ),
+                // ElevatedButton(
+                //   child: const Text("Go Back"),
+                //   onPressed: () => Navigator.pop(context),
+                // ),
               ],
             ),
           ],

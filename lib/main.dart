@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:my_flutter_assignment/Widgets/formFields.dart';
 import 'package:my_flutter_assignment/Widgets/appText.dart';
 import 'package:my_flutter_assignment/home.dart';
+import 'package:my_flutter_assignment/home_main.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
 import 'Widgets/PhoneNumber.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/Profile': (BuildContext context) => const ProfilePage(),
         '/Home': (BuildContext context) => const HomePage(),
         '/Settings': (BuildContext context) => const SettingsPage(),
+        '/HomeMain': (BuildContext context) => const HomeMain(),
       },
     );
   }
@@ -202,8 +204,12 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                           ),
                           child: TextFormField(
                             validator: (value) {
+                              String pattern = r'\w+@\w+.\w+';
+                              RegExp regex = RegExp(pattern);
                               if (value == null || value.isEmpty) {
                                 return "Enter your Email address";
+                              } else if (!regex.hasMatch(value)) {
+                                return "Enter a valid Email";
                               } else {
                                 return null;
                               }
@@ -329,7 +335,6 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                 ),
               ),
               const BottomText(),
-              const BottomText(text1: "Sick of this account?")
             ],
           ),
         ),
@@ -339,7 +344,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
 
   void name() async {
     final input = await Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
+        MaterialPageRoute(builder: (BuildContext context) => const HomeMain()));
     setState(() {
       myName = input;
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_assignment/Widgets/myDrawer.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -7,21 +8,14 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            Icons.chevron_left,
-            size: 35,
-          ),
-          color: Colors.black,
-        ),
+        automaticallyImplyLeading: true,
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, "/Settings"),
             icon: Icon(
               Icons.settings,
-              size: 35,
+              size: 306456,
               color: Colors.black,
             ),
           ),
@@ -37,6 +31,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.white54,
         centerTitle: true,
       ),
+      drawer: const MyDrawer(),
       body: Container(
         color: Colors.white,
         padding: const EdgeInsets.all(40),

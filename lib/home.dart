@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:my_flutter_assignment/profile.dart';
+import 'package:my_flutter_assignment/settings.dart';
+import 'Widgets/myDrawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,67 +20,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       //App Bar
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: const Text(
           "Home",
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white54,
+        backgroundColor: Colors.white,
       ),
       //The App Body
-      drawer: Drawer(
-        backgroundColor: Colors.grey[200],
-        child: ListView(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('images/Wallpaper.jpeg'),
-                  radius: 60,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Your App sha",
-                  style: TextStyle(fontSize: 20),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextButton(
-                style: TextButton.styleFrom(
-                    primary: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 30)),
-                onPressed: () => Navigator.pushNamed(context, '/Profile'),
-                child: const Text("Profile")),
-            SizedBox(
-              height: 1,
-            ),
-            TextButton(
-                style: TextButton.styleFrom(
-                    primary: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 30)),
-                onPressed: () => Navigator.pushNamed(context, '/Home'),
-                child: const Text("Home")),
-            SizedBox(
-              height: 1,
-            ),
-            TextButton(
-                style: TextButton.styleFrom(
-                    primary: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 30)),
-                onPressed: () => Navigator.pushNamed(context, '/Settings'),
-                child: const Text("Settings")),
-          ],
-        ),
-      ),
+      drawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -103,9 +55,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Welcome!",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 40,
                 ),
               ),
@@ -132,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                   ),
                   hintText: "HomeName",
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.only(),
                   ),
                   contentPadding: const EdgeInsets.all(20),
@@ -152,10 +104,10 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     width: 20,
                   ),
-                  ElevatedButton(
-                    child: const Text("Profile"),
-                    onPressed: () => Navigator.pushNamed(context, '/Profile'),
-                  ),
+                  // ElevatedButton(
+                  //   child: const Text("Profile"),
+                  //   onPressed: () => Navigator.pushNamed(context, '/Profile'),
+                  // ),
                 ],
               ),
             ],
