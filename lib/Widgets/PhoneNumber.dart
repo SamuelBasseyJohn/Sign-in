@@ -1,5 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PhoneNumber extends StatelessWidget {
   const PhoneNumber({
@@ -40,6 +41,9 @@ class PhoneNumber extends StatelessWidget {
         Expanded(
           flex: 4,
           child: TextFormField(
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(10),
+            ],
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "Enter your phone number";
