@@ -1,8 +1,9 @@
+import 'dart:ffi';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_flutter_assignment/OTP%20page.dart';
-import 'package:my_flutter_assignment/SignIn.dart';
 import 'package:my_flutter_assignment/Widgets/formFields.dart';
 import 'package:my_flutter_assignment/Widgets/appText.dart';
 import 'package:my_flutter_assignment/home.dart';
@@ -38,32 +39,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: "Inter-Bold",
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => const CreateYourAccount(),
-        '/Profile': (BuildContext context) => const ProfilePage(),
-        '/Home': (BuildContext context) => const HomePage(),
-        '/Settings': (BuildContext context) => const SettingsPage(),
-        '/HomeMain': (BuildContext context) => const HomeMain(),
-        '/OTP': (BuildContext context) => const OTP(),
-        '/SignIn': (BuildContext context) => const SignIn()
-      },
     );
   }
 }
 
-class CreateYourAccount extends StatefulWidget {
-  const CreateYourAccount({Key? key, title}) : super(key: key);
+class SignIn extends StatefulWidget {
+  const SignIn({Key? key, title}) : super(key: key);
 
   @override
-  State<CreateYourAccount> createState() => _CreateYourAccountState();
+  State<SignIn> createState() => _CreateYourAccountState();
 }
 
-class _CreateYourAccountState extends State<CreateYourAccount> {
+class _CreateYourAccountState extends State<SignIn> {
   // TextEditingController to handle input
-  final TextEditingController _firstAndMiddleName = TextEditingController();
-  final TextEditingController _surname = TextEditingController();
-  final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool? checkboxValue = false;
@@ -110,9 +98,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                 padding: EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 25.0),
                                 child: AppText(
-                                  text: "Create your account",
+                                  text: "Sign-in",
                                   textColor: Colors.black,
-                                  fontSize: 30,
+                                  fontSize: 35,
                                   fontWeight: FontWeight.bold,
                                 )),
                           ],
@@ -121,77 +109,10 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                         const Divider(
                           color: Colors.black,
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
 
-                        Row(
-                          children: const [
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                  20.0,
-                                  20.0,
-                                  20.0,
-                                  5.0,
-                                ),
-                                child: AppText(
-                                  text: "Full legal first and middle name(s) ",
-                                )),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: FormFields(
-                            firstAndMiddleName: _firstAndMiddleName,
-                            hintText: 'Full legal first and middle name(s)',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Enter your name";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                        ),
-                        Row(
-                          children: const [
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                                child: AppText(text: "Full legal surname")),
-                          ],
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              20.0,
-                              5.0,
-                              20.0,
-                              15.0,
-                            ),
-                            child: FormFields(
-                              firstAndMiddleName: _surname,
-                              hintText: "Full legal surname",
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Enter your Surname";
-                                } else if (value.length < 3) {
-                                  return "Surname?, Less than 3 letters?, IMPOSSIBLE!";
-                                } else {
-                                  return null;
-                                }
-                              },
-                            )),
-
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            20.0,
-                            15.0,
-                          ),
-                          child: PhoneNumber(phoneNumber: _phoneNumber),
-                        ),
                         Row(
                           children: const [
                             Padding(
@@ -284,41 +205,14 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             25.0,
                             15.0,
                           ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Checkbox(
-                                  value: checkboxValue,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      checkboxValue = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: Text(
-                                  "i confirm the information provided is correct as they appear on my legal document",
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                         //Tenary operator for Checking if the required textFormFields are
                         // filled and valid to enable color
-                        (checkboxValue! &&
-                                _surname.text.isNotEmpty &&
-                                _phoneNumber.text.isNotEmpty &&
-                                _email.text.isNotEmpty &&
-                                _password.text.isNotEmpty &&
-                                _firstAndMiddleName.text.isNotEmpty)
+                        (_email.text.length > 1 && _password.text.length > 1)
                             ? AppButton(
                                 buttonColor: Colors.blue,
                                 onPressed: () {
-                                  if (_formKey.currentState!.validate() &&
-                                      checkboxValue!) {
+                                  if (_formKey.currentState!.validate()) {
                                     name();
                                     // buttonColor();
                                   }
@@ -327,8 +221,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                             : AppButton(
                                 buttonColor: Colors.grey,
                                 onPressed: () {
-                                  if (_formKey.currentState!.validate() &&
-                                      checkboxValue!) {
+                                  if (_formKey.currentState!.validate()) {
                                     name();
                                     // buttonColor();
                                   }
@@ -339,7 +232,10 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                   ),
                 ),
               ),
-              const BottomText(),
+              const BottomText(
+                text1: "Don't have an account yet?",
+                text2: "Sign-up",
+              ),
             ],
           ),
         ),
@@ -349,7 +245,7 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
 
   void name() async {
     final input = await Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => const OTP()));
+        MaterialPageRoute(builder: (BuildContext context) => const HomeMain()));
     setState(() {
       myName = input;
     });
@@ -373,7 +269,7 @@ class AppButton extends StatelessWidget {
         ),
         primary: buttonColor,
       ),
-      child: const Text("Create your account"),
+      child: const Text("Sign-in"),
     );
   }
 }

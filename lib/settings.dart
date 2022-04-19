@@ -39,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 // ElevatedButton(
                 //   child: const Text("Go Back"),
                 //   onPressed: () => Navigator.pop(context),

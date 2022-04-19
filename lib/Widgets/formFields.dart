@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormFields extends StatelessWidget {
   final TextEditingController _firstAndMiddleName;
@@ -16,6 +17,9 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'[A-Z a-z]'))
+      ],
       validator: validator,
       controller: _firstAndMiddleName,
       decoration: const InputDecoration(

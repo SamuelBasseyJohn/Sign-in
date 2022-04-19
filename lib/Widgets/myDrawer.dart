@@ -105,7 +105,7 @@ class MyDrawer extends StatelessWidget {
             leading: const Icon(Icons.exit_to_app_sharp),
             title: const Text("Sign-out"),
             onTap: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/SignIn');
             },
           ),
 

@@ -42,6 +42,7 @@ class PhoneNumber extends StatelessWidget {
           flex: 4,
           child: TextFormField(
             inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'\d')),
               LengthLimitingTextInputFormatter(10),
             ],
             validator: (value) {
@@ -56,7 +57,7 @@ class PhoneNumber extends StatelessWidget {
             keyboardType: TextInputType.phone,
             controller: _phoneNumber,
             decoration: const InputDecoration(
-              hintText: "Example: 8180000000",
+              hintText: "Example: 8100000000",
               label: Text("Phone Number"),
               prefixText: (""),
               border: OutlineInputBorder(

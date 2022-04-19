@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
@@ -64,6 +65,10 @@ class _HomePageState extends State<HomePage> {
 
               //Created a form builder text field for input
               TextField(
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(20),
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                ],
                 controller: _homeName,
                 obscureText: !_isVisible,
                 decoration: InputDecoration(
@@ -83,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.grey,
                           ),
                   ),
-                  hintText: "HomeName",
+                  hintText: "Enter a text",
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.only(),
                   ),
@@ -93,22 +98,6 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(
                 height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    child: const Text("Go Back"),
-                    onPressed: () => Navigator.pop(context, _homeName.text),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  // ElevatedButton(
-                  //   child: const Text("Profile"),
-                  //   onPressed: () => Navigator.pushNamed(context, '/Profile'),
-                  // ),
-                ],
               ),
             ],
           ),
