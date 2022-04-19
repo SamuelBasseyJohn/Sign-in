@@ -232,10 +232,19 @@ class _CreateYourAccountState extends State<SignIn> {
                   ),
                 ),
               ),
-              const BottomText(
-                text1: "Don't have an account yet?",
-                text2: "Sign-up",
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account yet?"),
+                  TextButton(
+                    child: Text("Sign-up",
+                        style: const TextStyle(color: Colors.black)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/SignIn');
+                    },
+                  ),
+                ],
+              )
             ],
           ),
         ),
