@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 
 class BottomText extends StatelessWidget {
@@ -21,7 +18,7 @@ class BottomText extends StatelessWidget {
         TextButton(
           child: Text(text2, style: const TextStyle(color: Colors.black)),
           onPressed: () {
-            Navigator.pushNamed(context, '/SignIn');
+            Navigator.pushReplacementNamed(context, '/SignIn');
             print("Account Has been Created");
           },
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_assignment/sign_in.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -105,7 +106,10 @@ class MyDrawer extends StatelessWidget {
             leading: const Icon(Icons.exit_to_app_sharp),
             title: const Text("Sign-out"),
             onTap: () {
-              Navigator.pushNamed(context, '/SignIn');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => SignIn()));
             },
           ),
 

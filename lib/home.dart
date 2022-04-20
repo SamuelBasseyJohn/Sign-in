@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
-import 'Widgets/myDrawer.dart';
+import 'widgets/my_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

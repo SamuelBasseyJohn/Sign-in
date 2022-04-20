@@ -1,16 +1,16 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_flutter_assignment/OTP%20page.dart';
-import 'package:my_flutter_assignment/SignIn.dart';
-import 'package:my_flutter_assignment/Widgets/formFields.dart';
-import 'package:my_flutter_assignment/Widgets/appText.dart';
+import 'package:my_flutter_assignment/otp_page.dart';
+import 'package:my_flutter_assignment/sign_in.dart';
+import 'package:my_flutter_assignment/Widgets/form_fields.dart';
+import 'package:my_flutter_assignment/Widgets/app_text.dart';
 import 'package:my_flutter_assignment/home.dart';
 import 'package:my_flutter_assignment/home_main.dart';
 import 'package:my_flutter_assignment/profile.dart';
 import 'package:my_flutter_assignment/settings.dart';
-import 'Widgets/PhoneNumber.dart';
-import 'Widgets/BottomText.dart';
+import 'widgets/pn.dart';
+import 'widgets/btext.dart';
 
 void main() {
   runApp(const MyApp());
@@ -319,20 +319,15 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                                 onPressed: () {
                                   if (_formKey.currentState!.validate() &&
                                       checkboxValue!) {
-                                    name();
-                                    // buttonColor();
+                                    //name();
+                                    Navigator.pushReplacementNamed(
+                                        context, '/OTP');
                                   }
                                 },
                               )
                             : AppButton(
                                 buttonColor: Colors.grey,
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate() &&
-                                      checkboxValue!) {
-                                    name();
-                                    // buttonColor();
-                                  }
-                                },
+                                onPressed: () {},
                               ),
                       ],
                     ),
@@ -340,6 +335,9 @@ class _CreateYourAccountState extends State<CreateYourAccount> {
                 ),
               ),
               const BottomText(),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
         ),

@@ -1,57 +1,17 @@
-import 'dart:ffi';
-
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:my_flutter_assignment/OTP%20page.dart';
-import 'package:my_flutter_assignment/Widgets/formFields.dart';
-import 'package:my_flutter_assignment/Widgets/appText.dart';
-import 'package:my_flutter_assignment/home.dart';
 import 'package:my_flutter_assignment/home_main.dart';
-import 'package:my_flutter_assignment/profile.dart';
-import 'package:my_flutter_assignment/settings.dart';
-import 'Widgets/PhoneNumber.dart';
-import 'Widgets/BottomText.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        fontFamily: "Inter-Bold",
-      ),
-    );
-  }
-}
+import 'widgets/app_text.dart';
+import 'main.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key, title}) : super(key: key);
+  const SignIn({Key? key}) : super(key: key);
 
   @override
-  State<SignIn> createState() => _CreateYourAccountState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _CreateYourAccountState extends State<SignIn> {
-  // TextEditingController to handle input
+class _SignInState extends State<SignIn> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool? checkboxValue = false;
@@ -60,7 +20,6 @@ class _CreateYourAccountState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    // Scaffold
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -109,10 +68,6 @@ class _CreateYourAccountState extends State<SignIn> {
                         const Divider(
                           color: Colors.black,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-
                         Row(
                           children: const [
                             Padding(
@@ -198,17 +153,14 @@ class _CreateYourAccountState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            20.0,
-                            5.0,
-                            25.0,
-                            15.0,
-                          ),
+                        // ignore: prefer_const_constructors
+                        SizedBox(
+                          height: 10,
                         ),
+
                         //Tenary operator for Checking if the required textFormFields are
                         // filled and valid to enable color
-                        (_email.text.length > 1 && _password.text.length > 1)
+                        (_email.text.length >= 1 && _password.text.length >= 1)
                             ? AppButton(
                                 buttonColor: Colors.blue,
                                 onPressed: () {
@@ -235,16 +187,17 @@ class _CreateYourAccountState extends State<SignIn> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account yet?"),
+                  const Text("Don't have an account yet?"),
                   TextButton(
-                    child: Text("Sign-up",
-                        style: const TextStyle(color: Colors.black)),
+                    child: const Text("Sign Up",
+                        style: TextStyle(color: Colors.black)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/SignIn');
+                      Navigator.pushNamed(context, '/');
+                      print("Account Has been Created");
                     },
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -255,30 +208,5 @@ class _CreateYourAccountState extends State<SignIn> {
   void name() async {
     final input = await Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => const HomeMain()));
-    setState(() {
-      myName = input;
-    });
-  }
-}
-
-class AppButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final Color? buttonColor;
-  const AppButton({Key? key, this.onPressed, required this.buttonColor})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(340, 50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7),
-        ),
-        primary: buttonColor,
-      ),
-      child: const Text("Sign-in"),
-    );
   }
 }
